@@ -2,14 +2,13 @@
 title: "2.3 Loop Functions"
 output:
   html_document:
-    theme: united
     highlight: tango
-   
-    toc: true
+    theme: united
+    toc: yes
     toc_float:
-      collapsed: false
- 
-
+      collapsed: no
+  word_document:
+    toc: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -48,6 +47,7 @@ lapply(x,mean)
 x <- list(a = 1:4, b = rnorm(10), c = rnorm(20, 1), d = rnorm(100, 5))
 
 lapply(x,mean)
+
 ```
 
 

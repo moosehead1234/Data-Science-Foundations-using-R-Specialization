@@ -331,7 +331,7 @@ An auxiliary function split is also useful, particularly in conjunction with lap
 ## [1] 3
 ## 
 ## $b
-## [1] 0.2110473</code></pre>
+## [1] -0.5205434</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">b =</span> <span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="dt">c =</span> <span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dv">1</span>), <span class="dt">d =</span> <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">5</span>))
 
 <span class="kw">lapply</span>(x,mean)</code></pre></div>
@@ -339,26 +339,54 @@ An auxiliary function split is also useful, particularly in conjunction with lap
 ## [1] 2.5
 ## 
 ## $b
-## [1] -0.3948162
+## [1] 0.2971127
 ## 
 ## $c
-## [1] 0.9950017
+## [1] 0.9720027
 ## 
 ## $d
-## [1] 5.100062</code></pre>
+## [1] 5.045782</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x</code></pre></div>
+<pre><code>## $a
+## [1] 1 2 3 4
+## 
+## $b
+##  [1]  1.8374729 -0.1717419 -0.7220093 -0.1142519  1.5489496  0.5821449
+##  [7]  0.6567914 -0.1191202 -0.2133432 -0.3137655
+## 
+## $c
+##  [1]  0.4419719  0.8773758  0.8555176  0.4063625  1.8635744  0.7191861
+##  [7]  1.4138635  1.2826913  1.6508708  1.5365735 -0.2032504  0.5552971
+## [13] -0.6739754  0.8220723  1.8161628  1.9080788  0.2941568  0.8082118
+## [19]  2.4106989  0.6546142
+## 
+## $d
+##   [1] 4.814685 5.723229 5.313222 5.798580 5.066609 4.177628 4.599142 4.977006
+##   [9] 5.822820 5.804440 4.252245 5.559772 5.886046 5.748593 4.459522 4.138340
+##  [17] 6.460061 5.316642 5.803124 2.807064 5.013568 3.885724 2.720270 6.230382
+##  [25] 6.309444 4.913629 5.216576 4.905535 7.538693 6.146761 5.237040 5.624979
+##  [33] 4.599501 6.699315 5.853332 6.157987 5.540299 6.724303 4.788795 3.805932
+##  [41] 6.409511 4.164905 4.660115 5.160709 4.418123 4.564040 5.532228 5.704907
+##  [49] 5.120512 2.957140 5.158806 5.671800 3.615322 4.807200 4.307704 5.007048
+##  [57] 4.497866 3.218826 4.711539 4.336378 4.995195 4.262892 5.638736 5.632863
+##  [65] 5.605207 3.731933 4.120838 4.427556 4.355020 4.579698 5.596316 5.563406
+##  [73] 4.998643 5.457327 4.116644 3.424936 4.009494 3.527138 3.909372 6.159675
+##  [81] 5.522244 4.944074 5.792961 3.846141 4.762864 5.131028 4.972296 6.863069
+##  [89] 6.125829 5.742561 5.140395 5.374204 5.337795 5.453880 5.478852 4.454921
+##  [97] 6.958582 4.610107 3.307389 6.180656</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x&lt;-<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>
 <span class="kw">lapply</span>(x, runif, <span class="dt">min=</span><span class="dv">0</span>, <span class="dt">max=</span><span class="dv">10</span>)</code></pre></div>
 <pre><code>## [[1]]
-## [1] 6.31591
+## [1] 2.688957
 ## 
 ## [[2]]
-## [1] 1.663041 8.891639
+## [1] 3.475349 8.550463
 ## 
 ## [[3]]
-## [1] 4.124266 9.625489 9.313032
+## [1] 1.919407 3.982452 8.871040
 ## 
 ## [[4]]
-## [1] 2.368216 6.840141 4.929641 4.605948</code></pre>
+## [1] 9.628221 9.863210 5.447665 8.061620</code></pre>
 <p>lapply and friends make heavy use of anonymous functions.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x&lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a=</span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">b=</span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">2</span>))
 x</code></pre></div>
@@ -395,16 +423,16 @@ If it can’t figure things out, a list is returned<br />
 ## [1] 2.5
 ## 
 ## $b
-## [1] -0.708598
+## [1] 0.4874128
 ## 
 ## $c
-## [1] 0.7075704
+## [1] 1.099085
 ## 
 ## $de
-## [1] 5.089903</code></pre>
+## [1] 4.996387</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(x,mean)</code></pre></div>
-<pre><code>##          a          b          c         de 
-##  2.5000000 -0.7085980  0.7075704  5.0899027</code></pre>
+<pre><code>##         a         b         c        de 
+## 2.5000000 0.4874128 1.0990845 4.9963874</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(x)</code></pre></div>
 <pre><code>## Warning in mean.default(x): argument is not numeric or logical: returning NA</code></pre>
 <pre><code>## [1] NA</code></pre>
@@ -442,18 +470,15 @@ x</code></pre></div>
 ## [3,]    3    6</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x&lt;-<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">200</span>), <span class="dv">20</span>,<span class="dv">10</span>)
 <span class="kw">apply</span>(x,<span class="dv">1</span>,quantile, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))</code></pre></div>
-<pre><code>##           [,1]      [,2]       [,3]       [,4]       [,5]       [,6]       [,7]
-## 25% -1.2337807 -1.352680 -0.7963256 -0.2414889 -0.3374902 0.05667505 -0.6019716
-## 75%  0.2286261  1.184918  0.2406330  0.2516624  0.3877580 1.02267128  0.8544481
-##           [,8]      [,9]       [,10]      [,11]      [,12]      [,13]
-## 25% -0.7861027 -0.665110 -0.61714083 -0.3579179 -0.6237821 -0.8745962
-## 75%  0.9917797  1.146369 -0.06963498  1.4728073  0.2922046  0.8181943
-##          [,14]      [,15]      [,16]      [,17]      [,18]      [,19]
-## 25% 0.02839387 -0.2811924 -0.3136789 -0.5125235 -0.3196967 -1.3445473
-## 75% 0.98865739  0.9641445  0.3853950  0.4066084  0.5084348  0.6815142
-##          [,20]
-## 25% -1.3788790
-## 75% -0.2711495</code></pre>
+<pre><code>##          [,1]       [,2]       [,3]       [,4]       [,5]       [,6]       [,7]
+## 25% -0.173298 -0.8128509 -0.7823333 -0.6656369 -0.9876087 -0.4133967 -0.9429329
+## 75%  0.274764  0.4780824 -0.2423487  0.3160467  0.4583021  1.2450852  0.4579208
+##           [,8]      [,9]      [,10]      [,11]     [,12]      [,13]      [,14]
+## 25% -0.5034966 0.1045399 -0.5207634 -0.4228624 0.1574546 -0.6481309 -0.3751879
+## 75%  0.7720135 0.8788947  0.7181712  0.6734459 0.8588488  0.1957924  1.1319180
+##          [,15]      [,16]      [,17]      [,18]      [,19]      [,20]
+## 25% -0.7226275 -0.7624127 -0.7058296 0.04830529 -0.8467032 -0.5574793
+## 75%  1.0649167  0.8357838  0.1016041 1.23334939  0.6584718  0.6806682</code></pre>
 </div>
 </div>
 <div id="mapply" class="section level3">
@@ -512,74 +537,74 @@ IQ     &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="
 rating &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(N, <span class="dt">min=</span><span class="dv">0</span>, <span class="dt">max=</span><span class="dv">6</span>))
 (myDf  &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id=</span><span class="dv">1</span><span class="op">:</span>N, sex, group, age, IQ, rating))</code></pre></div>
 <pre><code>##    id sex group age  IQ rating
-## 1   1   f     T  18  85      6
-## 2   2   f     T  25 118      5
-## 3   3   m    WL  25 119      2
-## 4   4   f    WL  26  66      3
-## 5   5   m    CG  34  78      5
-## 6   6   m    WL  30 115      0
-## 7   7   f     T  21 124      2
-## 8   8   f    WL  31 113      2
-## 9   9   f    CG  33  95      1
-## 10 10   m    CG  22 111      2
-## 11 11   m    CG  18 102      4
-## 12 12   f     T  24 100      3</code></pre>
+## 1   1   m     T  25 106      0
+## 2   2   f    CG  31 107      3
+## 3   3   f    WL  21  90      1
+## 4   4   f    WL  20 109      4
+## 5   5   m    CG  28  98      3
+## 6   6   f    WL  34  99      3
+## 7   7   m     T  25  96      1
+## 8   8   m     T  31  91      1
+## 9   9   m     T  35  92      5
+## 10 10   m    WL  22  77      3
+## 11 11   m    CG  21 106      4
+## 12 12   f    CG  29  73      3</code></pre>
 <p>Group by the 'group' variable</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gDf&lt;-<span class="st"> </span><span class="kw">split</span>(myDf, myDf<span class="op">$</span>group)
 
 gDf</code></pre></div>
 <pre><code>## $CG
 ##    id sex group age  IQ rating
-## 5   5   m    CG  34  78      5
-## 9   9   f    CG  33  95      1
-## 10 10   m    CG  22 111      2
-## 11 11   m    CG  18 102      4
+## 2   2   f    CG  31 107      3
+## 5   5   m    CG  28  98      3
+## 11 11   m    CG  21 106      4
+## 12 12   f    CG  29  73      3
 ## 
 ## $T
-##    id sex group age  IQ rating
-## 1   1   f     T  18  85      6
-## 2   2   f     T  25 118      5
-## 7   7   f     T  21 124      2
-## 12 12   f     T  24 100      3
+##   id sex group age  IQ rating
+## 1  1   m     T  25 106      0
+## 7  7   m     T  25  96      1
+## 8  8   m     T  31  91      1
+## 9  9   m     T  35  92      5
 ## 
 ## $WL
-##   id sex group age  IQ rating
-## 3  3   m    WL  25 119      2
-## 4  4   f    WL  26  66      3
-## 6  6   m    WL  30 115      0
-## 8  8   f    WL  31 113      2</code></pre>
+##    id sex group age  IQ rating
+## 3   3   f    WL  21  90      1
+## 4   4   f    WL  20 109      4
+## 6   6   f    WL  34  99      3
+## 10 10   m    WL  22  77      3</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gsDF&lt;-<span class="kw">split</span>(myDf, <span class="kw">list</span>(myDf<span class="op">$</span>sex, myDf<span class="op">$</span>group))
 gsDF</code></pre></div>
 <pre><code>## $f.CG
-##   id sex group age IQ rating
-## 9  9   f    CG  33 95      1
+##    id sex group age  IQ rating
+## 2   2   f    CG  31 107      3
+## 12 12   f    CG  29  73      3
 ## 
 ## $m.CG
 ##    id sex group age  IQ rating
-## 5   5   m    CG  34  78      5
-## 10 10   m    CG  22 111      2
-## 11 11   m    CG  18 102      4
+## 5   5   m    CG  28  98      3
+## 11 11   m    CG  21 106      4
 ## 
 ## $f.T
-##    id sex group age  IQ rating
-## 1   1   f     T  18  85      6
-## 2   2   f     T  25 118      5
-## 7   7   f     T  21 124      2
-## 12 12   f     T  24 100      3
-## 
-## $m.T
 ## [1] id     sex    group  age    IQ     rating
 ## &lt;0 rows&gt; (or 0-length row.names)
 ## 
+## $m.T
+##   id sex group age  IQ rating
+## 1  1   m     T  25 106      0
+## 7  7   m     T  25  96      1
+## 8  8   m     T  31  91      1
+## 9  9   m     T  35  92      5
+## 
 ## $f.WL
 ##   id sex group age  IQ rating
-## 4  4   f    WL  26  66      3
-## 8  8   f    WL  31 113      2
+## 3  3   f    WL  21  90      1
+## 4  4   f    WL  20 109      4
+## 6  6   f    WL  34  99      3
 ## 
 ## $m.WL
-##   id sex group age  IQ rating
-## 3  3   m    WL  25 119      2
-## 6  6   m    WL  30 115      0</code></pre>
+##    id sex group age IQ rating
+## 10 10   m    WL  22 77      3</code></pre>
 </div>
 </div>
 <div id="exercises" class="section level2">
