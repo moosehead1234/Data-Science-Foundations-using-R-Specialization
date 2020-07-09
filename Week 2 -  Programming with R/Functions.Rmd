@@ -1,0 +1,171 @@
+---
+title: "Functions"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## First Function
+
+- write functions in a text file ( R script)
+
+
+```{r}
+add2 <- function(x,y){
+  x+y
+} ## didn't have to do anything to return, R returns the last expression
+add2(3,5)
+```
+
+### Take a vector of numbers, return subset based on a condition
+
+```{r}
+above10 <- function(x){
+  use <- x> 10 ##return logical vector
+  x[use] ##return this
+}
+above <- function(x,n){
+  use <- x > n
+  x[use]
+}
+
+x<- 1:20
+above(x,15)
+
+above <- function(x, n = 10){ ## set default value to 10 
+use <- x > n
+x[use]
+}
+
+
+```
+
+### Calculate the mean of each column in matrix or data frame
+
+
+```{r}
+columnmean <-function(y){ # y is a data fram or matrix
+  nc <- ncol(y)
+  means <-numeric(nc) #empty vector = num columns to store means
+  for(i in 1:nc){
+    means[i] <- mean(y[ , i])
+
+  }
+  means # return
+}
+d<- data.frame( col1=1:4, col2 = 5:8, col3 = c(NA, NA, 4, 6) )
+d
+columnmean(d)
+#can't calculate mean where we have NA's in column
+
+#rewrite the fn to remove NA's before calculting mean
+
+columnmean <-function(y, removeNA = TRUE){ # y is a data fram or matrix
+  nc <- ncol(y)
+  means <-numeric(nc) #empty vector = num columns to store means
+  for(i in 1:nc){
+    means[i] <- mean(y[ , i], na.rm = removeNA)
+
+  }
+  means # return
+}
+columnmean(d)
+columnmean(d, FALSE)
+
+
+
+```
+
+
+## Functions Part1
+
+Functions are R objects of class 'function'  
+The return value is the last expression in the function to be evaluated.  
+
+
+Functions have **names argument** which may have default values.  
+**Formal Arguments** : included in definition. 
+**formals function** returns list of formal arguments.  
+
+##Argument Matching
+
+
+R functions arguments can be matched positionally or by name. So the following calls to sd are all
+equivalent
+
+```{r}
+mydata <- rnorm(100)
+sd(mydata)
+sd(x=mydata)
+sd(x=mydata, na.rm = FALSE) #when name your arguments, you don't have to use them in order
+sd(na.rm = FALSE, x=mydata)
+sd(na.rm = FALSE, mydata)
+```
+
+
+```{r}
+args(lm)
+
+
+
+
+#lm(data = mydata, formula=y-x, model=FALSE, subset=1:100)  
+#lm(y-x, mydata, 1:100, model = FALSE) # if you don't overide defaulst, they will be used from the args defitinition 
+```
+
+## Functions Part 2
+
+### Lazy evaluation
+
+```{r}
+f<- function(a,b){
+  a^2
+}
+f(2) #fn never uses the value b, a is positionally matched to a
+```
+
+
+### The "..." Argument
+
+The ... argument indicate a variable number of arguments that are usually passed on to other
+functions.  
+... is often used when extending another function and you don’t want to copy the entire argument
+list of the original function 
+
+```{r}
+myplot <- function(x, y, type = "l", ...) {
+ plot(x, y, type = type, ...)
+}
+```
+
+
+The ... argument is also necessary when the number of arguments passed to the function cannot be
+known in advance.  
+
+```{r}
+args(paste)
+args(cat) # here the '...' is the set of R objects (we don't know how many ) that will be concatenated.
+```
+
+Any arguments that appear after ... on the argument list must be named
+explicitly and cannot be partially matched.  
+
+
+```{r}
+args(paste)
+paste("a", "b", sep =":")
+
+```
+
+
+
+
+
+
+
+

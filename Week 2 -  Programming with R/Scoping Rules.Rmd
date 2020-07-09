@@ -1,0 +1,79 @@
+---
+title: "Scoping Rules"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Symbol Binding
+
+When you need to retrieve the value of an R object, the order is roughly:
+
+```{r}
+search()
+
+```
+
+The Global Environment = working environment
+
+
+### Scoping Rules
+
+Scoping rules determine how a value is associated with a free variable in a function
+
+R Uses Lexical Scoping which means that values of free variables are searched for in the environment in which the function was defined.  
+If not there, will go to parent environment ( next item on the search list)
+
+Only when the value for the free variable does not exist in any environment, is an error thrown.  
+
+
+## R Scoping Rules
+
+Point: ** You can define things like global variables taht will be common to a lot of functions**
+
+```{r}
+make.power <- function(n){
+  pow <- function(x){
+    x^n
+  }
+  pow
+}
+
+#This function returns another function as its value
+cube <- make.power(3)
+cube(3)
+
+# Whats in a  functions Environment?
+ls(environment(cube))
+get("n", environment(cube))
+
+
+
+```
+### Lexical vs. Dynamic Scoping
+
+```{r}
+y <- 10
+
+f<- function(x){
+  y<- 2
+  y^2 +g(x)
+}
+
+
+g<-function(x){
+  x*y # value of y in g function is 10.  This is lexical scoping.  Dynamic Scoping would assign y =2.
+1
+  }
+```
+
+
+Consequence of lexical scoping -> all R objects must be stored in memory
+
+
+
