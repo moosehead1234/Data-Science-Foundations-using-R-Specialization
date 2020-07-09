@@ -4,15 +4,16 @@ output:
   html_document:
     theme: united
     highlight: tango
-   
+    
     toc: true
     toc_float:
       collapsed: false
       
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = T,
+                      results = "hide")
 ```
 This week is what I call "loop functions" in R, which are **functions that allow you to execute loop-like behavior in a compact form.** These functions typically have the word "apply" in them and are particularly convenient when you need to execute a loop on the command line when using R interactively. These functions are some of the more interesting functions of the R language.
 
@@ -36,14 +37,14 @@ arguments via its ... argument. **If X is not a list, it will be coerced to a li
 
 
 lapply always returns a list, regardless of the class of the input.
-```{r}
+```{r }
 x<- list(a=1:5, b=rnorm(10))
 lapply(x,mean)
 
 
 ```
 
-```{r}
+```{r r echo=T, results='hide'}
 x <- list(a = 1:4, b = rnorm(10), c = rnorm(20, 1), d = rnorm(100, 5))
 
 lapply(x,mean)
